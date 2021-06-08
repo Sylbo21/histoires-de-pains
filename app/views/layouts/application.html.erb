@@ -8,39 +8,40 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <div class="container">
-        <!-- replace by logo image?-->
-        <%= link_to('Histoires de pains', root_path, class: 'navbar-brand') %>
-        <div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div id="navbarContent" class="collapse navbar-collapse">
-            <!-- This is anonymous navigation (to be modified for users and admins with appropriate partials) -->
-            <ul class="navbar-nav">
-              <!-- Apply "active" class dynamically -->
-              <li class="nav-item active">
-                <!-- Replace with link_to helper -->
-                <a class="nav-link" href="#">Abonnements</a>
-              </li>
-              <li class="nav-item">
-                <!-- Replace with link_to helper -->
-                <a class="nav-link" href="#">Créer un compte</a>
-              </li>
-              <li class="nav-item">
-                <!-- Replace with link_to helper -->
-                <a class="nav-link" href="#">Se connecter</a>
-              </li>
-            </ul>
+  <body>
+
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+          <!-- replace by logo image?-->
+          <%= link_to('Histoires de pains', root_path, class: 'navbar-brand') %>
+          <div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarContent" class="collapse navbar-collapse">
+              <!-- This is anonymous navigation (to be modified for users and admins with appropriate partials) -->
+              <ul class="navbar-nav">
+                <!-- Apply "active" class dynamically -->
+                <li class="nav-item active">
+                  <!-- Replace with link_to helper -->
+                  <a class="nav-link" href="#">Abonnements</a>
+                </li>
+                <li class="nav-item">
+                  <!-- Replace with link_to helper -->
+                  <a class="nav-link" href="#">Créer un compte</a>
+                </li>
+                <li class="nav-item">
+                  <!-- Replace with link_to helper -->
+                  <a class="nav-link" href="#">Se connecter</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-  </header>
-
-  <body>
+      </nav>
+    </header>
+    
     <%= yield %>
   </body>
 </html>
