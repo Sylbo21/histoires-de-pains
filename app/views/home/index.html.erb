@@ -1,2 +1,12 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+
+<h2>Liste des points de distribution</h2>
+
+<ul>
+  <% @locations.each do |location| %>
+        <li>
+          <%= location.name %>: <%= location.address %>
+        </li>
+      <% end %>
+</ul>
