@@ -57,3 +57,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 5.0.1'
 # Add jQuery library to app
 gem 'jquery-rails'
+# Add geocoder gem to automatically create lattitude and longitude coordinates in Locations table from street address
+gem 'geocoder'
