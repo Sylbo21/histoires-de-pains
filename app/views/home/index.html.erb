@@ -6,7 +6,7 @@
 <ul>
   <% @locations.each do |location| %>
         <li>
-          <%= location.name %>: <%= location.address %>
+          <%= location.name %>: <%= location.address %> | lat: <%= location.latitude %>, long: <%= location.longitude %>
         </li>
       <% end %>
 </ul>
