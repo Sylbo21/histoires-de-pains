@@ -1,17 +1,9 @@
 function initMap() {
 
-  var locations = [
-    ['<b>Rouvraie</b><br>Parc-de-la-Rouvraie 6, 1018 Lausanne', 46.531416, 6.63330418625455, 4],
-    ['<b>Palézieux-Village</b><br>Ch. des Charbonneyres 1, 1607 Palézieux-Village', 46.5561119, 6.63330418625455, 5],
-    ['<b>Corcelles-sur-Chavornay</b><br>Le Château 3, 1374 Corcelles-sur-Chavornay', 46.7035444, 6.599179833679428]
-  /*
-   * Next point on map
-   *   -Notice how the last number within the brackets incrementally increases from the prior marker
-   */
-  ];
+  var locations = document.querySelectorAll('#locations-list li');
 
   var mapOptions = {
-    center: new google.maps.LatLng(locations[0][1], locations[0][2]),
+    center: new google.maps.LatLng(0, 0),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
@@ -26,7 +18,7 @@ function initMap() {
 
   for (i = 0; i < locations.length; i++) {
     marker = new google.maps.Marker({
-      position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+      position: new google.maps.LatLng(locations[i].dataset.lat, locations[i].dataset.lon),
       map: map
     });
 
@@ -35,7 +27,7 @@ function initMap() {
 
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
       return function() {
-        infowindow.setContent(locations[i][0]);
+        infowindow.setContent(locations[i].dataset.markercontent);
         infowindow.open(map, marker);
       }
     })(marker, i));

@@ -11,12 +11,10 @@
 
 <h2>Liste des points de distribution</h2>
 
-<ul>
+<ul id="locations-list">
   <% @locations.each do |location| %>
-        <li>
-          <%= location.name %>: <%= location.address %> | lat: <%= location.latitude %>, long: <%= location.longitude %>
-        </li>
-      <% end %>
+    <%= tag.li "#{location.name}: #{location.address}", data: { markercontent: "<strong>#{location.name}</strong><br>#{location.address}", lat: location.latitude, lon: location.longitude } %>
+  <% end %>
 </ul>
 
 <div id="map"></div>
