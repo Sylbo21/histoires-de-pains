@@ -59,3 +59,5 @@ gem 'bootstrap', '~> 5.0.1'
 gem 'jquery-rails'
 # Add geocoder gem to automatically create lattitude and longitude coordinates in Locations table from street address
 gem 'geocoder'
+# Add Administrate to simplify the building of the admin section
+gem 'administrate'
