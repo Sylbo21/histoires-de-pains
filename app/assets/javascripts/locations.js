@@ -18,6 +18,8 @@ function initMap() {
 
   for (i = 0; i < locations.length; i++) {
 
+    // Improvement idea (to implement): add different sets of markers (different colors) according to the rounds (which means that one location could have serveral markers on it)???
+
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(locations[i].dataset.lat, locations[i].dataset.lon),
       map: map
