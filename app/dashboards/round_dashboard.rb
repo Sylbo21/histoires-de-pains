@@ -10,7 +10,8 @@ class RoundDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     locations: Field::HasMany,
     id: Field::Number,
-    day: Field::String,
+    # day: Field::String,
+    day: Field::Select.with_options(collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -40,8 +41,8 @@ class RoundDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    locations
     day
+    locations
   ].freeze
 
   # COLLECTION_FILTERS
@@ -62,4 +63,7 @@ class RoundDashboard < Administrate::BaseDashboard
   # def display_resource(round)
   #   "Round ##{round.id}"
   # end
+  def display_resource(round)
+    round.day
+  end
 end

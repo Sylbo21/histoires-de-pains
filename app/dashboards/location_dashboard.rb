@@ -70,4 +70,8 @@ class LocationDashboard < Administrate::BaseDashboard
   # def display_resource(location)
   #   "Location ##{location.id}"
   # end
+  def display_resource(location)
+    location.name
+  end
+
 end
