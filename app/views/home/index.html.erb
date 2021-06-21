@@ -13,7 +13,7 @@
 
 <ul id="locations-list">
   <% @locations.each do |location| %>
-    <%= tag.li "#{location.name}: #{location.address}", data: { markercontent: "<strong>#{location.name}</strong><br>#{location.address}", lat: location.latitude, lon: location.longitude } %>
+    <%= tag.li "#{location.name}: #{location.address}", data: { markercontent: "<strong>#{location.name}</strong><br>#{location.address}", lat: location.latitude, lon: location.longitude, rounds: location.rounds } %>
   <% end %>
 </ul>
 

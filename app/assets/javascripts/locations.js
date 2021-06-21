@@ -17,6 +17,7 @@ function initMap() {
   var marker, i;
 
   for (i = 0; i < locations.length; i++) {
+
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(locations[i].dataset.lat, locations[i].dataset.lon),
       map: map
@@ -27,7 +28,15 @@ function initMap() {
 
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
       return function() {
-        infowindow.setContent(locations[i].dataset.markercontent);
+        var rounds = JSON.parse(locations[i].dataset.rounds);
+        var days = [];
+        for (i = 0; i < rounds.length; i++) {
+          var round = rounds[i];
+          var day = round.day;
+          days.push(day);
+        };
+        // infowindow.setContent(locations[i].dataset.markercontent);
+        infowindow.setContent(locations[i].dataset.markercontent + "<br><strong>Livraisons:</strong><br>" + days.join("<br>"));
         infowindow.open(map, marker);
       }
     })(marker, i));
