@@ -32,15 +32,15 @@ function initMap() {
       return function() {
         var rounds = JSON.parse(locations[i].dataset.rounds);
         var days = [];
-        for (i = 0; i < rounds.length; i++) {
-          var round = rounds[i];
+        for (n = 0; n < rounds.length; n++) {
+          var round = rounds[n];
           var day = round.day;
           days.push(day);
         };
         // infowindow.setContent(locations[i].dataset.markercontent);
         infowindow.setContent(locations[i].dataset.markercontent + "<br><strong>Livraisons:</strong><br>" + days.join("<br>"));
         infowindow.open(map, marker);
-      }
+      };
     })(marker, i));
 
     //Center map and adjust Zoom based on the position of all markers.
