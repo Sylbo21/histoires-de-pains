@@ -6,16 +6,21 @@
     </script>
 <% end %>
 
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container">
+  <h1>Home#index</h1>
+  <p>Find me in app/views/home/index.html.erb</p>
 
-<h2>Liste des points de distribution</h2>
+  <h2>Liste des points de distribution</h2>
 
-<ul id="locations-list">
-  <% @locations.each do |location| %>
-    <%= tag.li "#{location.name}: #{location.address}", data: { markercontent: "<strong>#{location.name}</strong><br>#{location.address}", lat: location.latitude, lon: location.longitude, rounds: location.rounds } %>
-  <% end %>
-</ul>
+  <div class="locations row">
+    <ul id="locations-list" class="col-md-4 col-lg-3">
+      <% @locations.each do |location| %>
+        <%= tag.li "#{location.name}", id: "location#{location.id}", data: { markercontent: "<strong>#{location.name}</strong><br>#{location.address}", lat: location.latitude, lon: location.longitude, rounds: location.rounds } %>
+      <% end %>
+    </ul>
+    <div id="map" class="col-md-8 col-lg-9"></div>
+  </div>
 
-<div id="map"></div>
-<p>Cliquer sur un marqueur pour afficher les détails du point de distribution</p>
+  <p>Cliquer sur le nom d'un lieu ou sur un marqueur pour afficher les détails du point de distribution.</p>
+
+</div>

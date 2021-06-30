@@ -14,38 +14,47 @@ function initMap() {
   //Create LatLngBounds object.
   var latlngbounds = new google.maps.LatLngBounds();
 
-  var marker, i;
+  var marker;
+  var i;
 
-  for (i = 0; i < locations.length; i++) {
+  function setMarkers(map) {
 
-    // Improvement idea (to implement): add different sets of markers (different colors) according to the rounds (which means that one location could have serveral markers on it)???
+    for (i = 0; i < locations.length; i++) {
 
-    marker = new google.maps.Marker({
-      position: new google.maps.LatLng(locations[i].dataset.lat, locations[i].dataset.lon),
-      map: map
-    });
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i].dataset.lat, locations[i].dataset.lon),
+        map: map,
+      });
 
-    //extend the bounds to include each marker's position
-    latlngbounds.extend(marker.position);
+      //extend the bounds to include each marker's position
+      latlngbounds.extend(marker.position);
 
-    google.maps.event.addListener(marker, 'click', (function(marker, i) {
-      return function() {
-        var rounds = JSON.parse(locations[i].dataset.rounds);
-        var days = [];
-        for (n = 0; n < rounds.length; n++) {
-          var round = rounds[n];
-          var day = round.day;
-          days.push(day);
+      function displayInfoWindow(marker, i) {
+        return function() {
+          map.setZoom(13);
+          map.panTo(marker.getPosition());
+          var rounds = JSON.parse(locations[i].dataset.rounds);
+          var days = [];
+          for (n = 0; n < rounds.length; n++) {
+            var round = rounds[n];
+            var day = round.day;
+            days.push(day);
+          };
+          infowindow.setContent(locations[i].dataset.markercontent + "<br><strong>Livraisons:</strong><br>" + days.join("<br>"));
+          infowindow.open(map, marker);
         };
-        // infowindow.setContent(locations[i].dataset.markercontent);
-        infowindow.setContent(locations[i].dataset.markercontent + "<br><strong>Livraisons:</strong><br>" + days.join("<br>"));
-        infowindow.open(map, marker);
       };
-    })(marker, i));
 
-    //Center map and adjust Zoom based on the position of all markers.
-    map.setCenter(latlngbounds.getCenter());
-    map.fitBounds(latlngbounds);
+      google.maps.event.addListener(marker, 'click', (displayInfoWindow(marker, i)));
+
+      let locationItem = document.querySelector('#location' + (i+1).toString());
+      locationItem.addEventListener('click', (displayInfoWindow(marker, i)));
+    };
   };
+
+  setMarkers(map);
+  //Center map and adjust Zoom based on the position of all markers.
+  map.setCenter(latlngbounds.getCenter());
+  map.fitBounds(latlngbounds);
 
 };

@@ -2,7 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.locations {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+#locations-list {
+  list-style-type: none;
+  li {
+      margin: .5em 0;
+      cursor: pointer;
+    }
+}
+
 #map {
-    width: 600px;
     height: 400px;
 }
