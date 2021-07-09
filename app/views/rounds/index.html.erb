@@ -14,7 +14,7 @@
 
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed porttitor magna. Donec vitae mi a arcu lacinia tristique sed quis mi. Phasellus tincidunt et ex id malesuada. Sed leo nibh, eleifend a neque suscipit, convallis ullamcorper lorem. Sed at neque pellentesque, semper velit ut, pellentesque sapien. Mauris quis tempus nibh. In libero dolor, finibus vitae finibus nec, suscipit ac sapien. In convallis metus non imperdiet fringilla. Ut ac pellentesque magna. Integer pharetra tellus vel sem convallis placerat.</p>
 
-  <h2>Liste des points de distribution</h2>
+  <h2>Nos points de distribution</h2>
 
   <div class="locations row">
     <ul id="locations-list" class="col-md-4 col-lg-3">
@@ -26,5 +26,15 @@
   </div>
 
   <p class="text-center text-primary">Cliquer sur le nom d'un lieu ou sur un marqueur pour afficher les détails du point de distribution.</p>
+
+  <h2>Nos tournées hebdomadaires</h2>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+    <% @rounds.each do |round| %>
+      <%= render(partial: 'round_card', locals: {
+        day: round.day,
+        spots: round.locations
+      }) %>
+    <% end %>
+  </div>
 
 </div>

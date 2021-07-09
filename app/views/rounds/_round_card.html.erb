@@ -1,0 +1,18 @@
+<div class="col mb-4 text-center">
+  <div class="card h-100">
+    <div class="card-header"><%= day %>s</div>
+    <div class="card-body">
+      <ul>
+        <% spots.each do |spot| %>
+            <li>
+              <%= spot.name %>
+            </li>
+          <% end %>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <!-- Replace with link_to helper + alternative content (conditional) -->
+      <a href="#" class="btn btn-primary">Log in to subscribe</a>
+    </div>
+  </div>
+</div>
