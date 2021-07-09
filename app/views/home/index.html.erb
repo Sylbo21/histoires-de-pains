@@ -8,18 +8,4 @@
 
 <div class="container">
   <h1>Histoires de pains</h1>
-
-  <h2>Liste des points de distribution</h2>
-
-  <div class="locations row">
-    <ul id="locations-list" class="col-md-4 col-lg-3">
-      <% @locations.each do |location| %>
-        <%= tag.li "#{location.name}", id: "location#{location.id}", data: { markercontent: "<strong>#{location.name}</strong><br>#{location.address}", lat: location.latitude, lon: location.longitude, rounds: location.rounds } %>
-      <% end %>
-    </ul>
-    <div id="map" class="col-md-8 col-lg-9"></div>
-  </div>
-
-  <p>Cliquer sur le nom d'un lieu ou sur un marqueur pour afficher les détails du point de distribution.</p>
-
 </div>
