@@ -1,4 +1,4 @@
-location1 = Location.create! name: 'Rouvraie',
+location1 = Location.create! name: 'Lausanne Rouvraie',
                              address: 'Parc-de-la-Rouvraie 6, 1018 Lausanne'
 
 location2 = Location.create! name: 'Palézieux-Village',
