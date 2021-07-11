@@ -3,7 +3,7 @@ require 'test_helper'
 class LocationTest < ActiveSupport::TestCase
 
   # test 'the first Location created is first in the list' do
-  # # Fails: gives <Location id: 298486374, name: "MyString", address: "MyString", created_at: "2021-07-09 14:21:17", updated_at: "2021-07-09 14:21:17", latitude: nil, longitude: nil> as Location.all.first -> why? Because of automatic lon/lat attributes?
+  # # Fails: gives <Location id: 298486374, name: "MyString", address: "MyString", created_at: "2021-07-09 14:21:17", updated_at: "2021-07-09 14:21:17", latitude: nil, longitude: nil> as Location.all.first -> why? Because of automatic lon/lat attributes? -> Seems not because same problem with Rounds
   #    first_location = Location.new name: 'New York',
   #                                  address: 'Bleeker Street, New York'
   #    first_location.save!
