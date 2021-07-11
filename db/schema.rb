@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210711210056) do
+ActiveRecord::Schema.define(version: 20210711210846) do
 
   create_table "batches", force: :cascade do |t|
     t.datetime "date"
     t.string "bread"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "round_id"
+    t.index ["round_id"], name: "index_batches_on_round_id"
   end
 
   create_table "locations", force: :cascade do |t|
