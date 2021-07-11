@@ -40,7 +40,11 @@ function initMap() {
             var day = round.day;
             days.push(day);
           };
-          infowindow.setContent(locations[i].dataset.markercontent + "<br><strong>Livraisons:</strong><br>" + days.join("<br>"));
+          if (Array.isArray(days) && !days.length) {
+            infowindow.setContent(locations[i].dataset.markercontent + "<br><strong>Pour le moment, aucun jour de livraison n'a été défini pour ce point.</strong><br>");
+          } else {
+            infowindow.setContent(locations[i].dataset.markercontent + "<br><strong>Livraisons:</strong><br>" + days.join("<br>"));
+          }
           infowindow.open(map, marker);
         };
       };
