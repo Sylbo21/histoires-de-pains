@@ -79,18 +79,15 @@ class LocationTest < ActiveSupport::TestCase
 
   test 'location has no name' do
     location = Location.new address: '10 Downing Street, London'
-    location.save!
     refute location.valid?
   end
 
   test 'location has no address' do
     location = Location.new name: 'St-Petersburg'
-    location.save!
     refute location.valid?
   end
 
   test 'latitude gets created after validation' do
-    # Gives an error (normal?) but test passes
     location = Location.new name: 'London',
                             address: '10 Downing Street, London'
     location.save!
@@ -98,7 +95,6 @@ class LocationTest < ActiveSupport::TestCase
   end
 
   test 'longitude gets created after validation' do
-    # Gives an error (normal?) but test passes 
     location = Location.new name: 'Paris',
                             address: 'Av. des Champs-Elysées 2, Paris'
     location.save!
