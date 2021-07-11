@@ -67,6 +67,6 @@ class BatchDashboard < Administrate::BaseDashboard
   #   "Batch ##{batch.id}"
   # end
   def display_resource(batch)
-    batch.date
+    batch.date.strftime("%A %e %B %Y")
   end
 end
