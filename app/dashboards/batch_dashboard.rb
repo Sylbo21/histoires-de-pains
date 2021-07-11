@@ -10,7 +10,7 @@ class BatchDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     round: Field::BelongsTo,
     id: Field::Number,
-    date: Field::DateTime,
+    date: Field::Date,
     bread: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -66,4 +66,7 @@ class BatchDashboard < Administrate::BaseDashboard
   # def display_resource(batch)
   #   "Batch ##{batch.id}"
   # end
+  def display_resource(batch)
+    batch.date
+  end
 end
