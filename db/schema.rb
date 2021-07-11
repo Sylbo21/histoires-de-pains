@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210711210846) do
+ActiveRecord::Schema.define(version: 20210711220349) do
 
   create_table "batches", force: :cascade do |t|
-    t.datetime "date"
+    t.time "date"
     t.string "bread"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
