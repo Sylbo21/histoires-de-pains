@@ -43,5 +43,19 @@ class RoundTest < ActiveSupport::TestCase
     round.save!
     assert_equal(round.locations.first.name, "Paris")
   end
-  
+
+  test 'round has no day' do
+    # Gives an error (normal?) but test passes
+    round = Round.new
+    round.save!
+    refute round.valid?
+  end
+
+  test 'round has wrong day' do
+    # Gives an error (normal?) but test passes
+    round = Round.new day: 'Jeudredi'
+    round.save!
+    refute round.valid?
+  end
+
 end
