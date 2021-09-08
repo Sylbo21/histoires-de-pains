@@ -61,3 +61,5 @@ gem 'jquery-rails'
 gem 'geocoder'
 # Add Administrate to simplify the building of the admin section
 gem 'administrate'
+# Add bcrypt gem to generate secure password digests
+gem 'bcrypt'
