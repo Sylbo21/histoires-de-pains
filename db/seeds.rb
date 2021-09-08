@@ -11,6 +11,24 @@ round1 = Round.create! day: 'Lundi'
 round2 = Round.create! day: 'Mardi'
 round3 = Round.create! day: 'Mercredi'
 
+batch1 = Batch.create! round: round1,
+                       date: Date.parse('2021-09-13'),
+                       bread: 'Kamut'
+
+batch2 = Batch.create! round: round1,
+                       date: Date.parse('2021-09-20'),
+                       bread: 'Spelt'
+
+batch3 = Batch.create! round: round2,
+                       date: Date.parse('2021-09-14'),
+                       bread: 'Multigrain'
+
+batch4 = Batch.create! round: round2,
+                       date: Date.parse('2021-09-21')
+
+batch5 = Batch.create! round: round3,
+                       date: Date.parse('2021-09-15')
+
 round1.locations << location1
 round1.locations << location2
 round2.locations << location3
