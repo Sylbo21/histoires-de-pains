@@ -4,6 +4,9 @@ class Batch < ApplicationRecord
   validates :date, presence: true
   validates :date, uniqueness: true
 
-  scope :next, -> { order(date: :asc).limit(6) }
+  scope :future,         -> { where('date > ?', Date.today) }
+  scope :chronological,  -> { order(date: :asc) }
+  scope :next_ones,      -> { future.chronological }
+  scope :very_next_ones, -> { next_ones.limit(3) }
 
 end
