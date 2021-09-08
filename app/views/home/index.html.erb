@@ -6,7 +6,33 @@
 <div class="container">
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed porttitor magna. Donec vitae mi a arcu lacinia tristique sed quis mi. Phasellus tincidunt et ex id malesuada. Sed leo nibh, eleifend a neque suscipit, convallis ullamcorper lorem. Sed at neque pellentesque, semper velit ut, pellentesque sapien. Mauris quis tempus nibh. In libero dolor, finibus vitae finibus nec, suscipit ac sapien. In convallis metus non imperdiet fringilla. Ut ac pellentesque magna. Integer pharetra tellus vel sem convallis placerat.</p>
 
-  <!-- Add guard clause to display this part only if at least one upcoming batch exists -->
-  <h2>Nos prochaines fournées:</h2>
-  <!-- Intégrer ici une liste dynamique des X(3?) prochaines fournées (date + type de pain)-->
+  <% if(@batches.any?) %>
+    <h2>Nos prochaines fournées:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Tournée</th>
+          <th>Date</th>
+          <th>Type de pain</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @batches.each do |batch| %>
+          <tr>
+            <td><%= batch.round.day %></td>
+            <td><%= batch.date.strftime("%e %B %Y") %></td>
+            <td>
+              <% if batch.bread.present? %>
+                <%= batch.bread %>
+              <% else %>
+                (Pas encore défini)
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Retrouvez bientôt ici la liste de nos prochaines fournées.</p>
+  <% end %>
 </div>

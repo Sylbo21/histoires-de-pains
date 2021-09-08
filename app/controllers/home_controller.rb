@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @batches = Batches.next
+    @batches = Batch.next
   end
 end
