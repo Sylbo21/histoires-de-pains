@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :locations
     resources :rounds
     resources :batches
+    resources :users
 
     root to: "locations#index"
   end
