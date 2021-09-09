@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210711221406) do
+ActiveRecord::Schema.define(version: 20210909074422) do
 
   create_table "batches", force: :cascade do |t|
     t.date "date"
@@ -37,6 +37,20 @@ ActiveRecord::Schema.define(version: 20210711221406) do
 
   create_table "rounds", force: :cascade do |t|
     t.string "day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "role"
+    t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.string "address"
+    t.string "npa"
+    t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
