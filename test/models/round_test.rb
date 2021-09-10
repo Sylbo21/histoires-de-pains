@@ -2,14 +2,13 @@ require 'test_helper'
 
 class RoundTest < ActiveSupport::TestCase
 
-  # test 'the first Round created is first in the list' do
-  #   # Fails: gives <Round id: 298486374, day: "MyString", created_at: "2021-07-10 06:35:01", updated_at: "2021-07-10 06:35:01"> as Round.all.first -> why?
-  #    first_round = Round.new day: 'Lundi'
-  #    first_round.save!
-  #    second_round = Round.new day: 'Mardi'
-  #    second_round.save!
-  #    assert_equal(first_round, Round.all.first)
-  # end
+  test 'the first Round created is first in the list' do
+     first_round = Round.new day: 'Lundi'
+     first_round.save!
+     second_round = Round.new day: 'Mardi'
+     second_round.save!
+     assert_equal(first_round, Round.all.first)
+  end
 
   test 'updated_at is changed after updating day' do
     round = Round.new day: 'Mercredi'

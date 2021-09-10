@@ -2,17 +2,16 @@ require 'test_helper'
 
 class BatchTest < ActiveSupport::TestCase
 
-  # test 'the first Batch created is first in the list' do
-  #   # Fails: gives <Batch id: 298486374, date: "2021-07-12", bread: "MyString", created_at: "2021-09-08 11:52:35", updated_at: "2021-09-08 11:52:35", round_id: nil> as Batch.all.first -> why?
-  #    round = Round.new day: 'Lundi'
-  #    first_batch = Batch.new round: round,
-  #                            date: Date.parse('2021-09-13')
-  #    first_batch.save!
-  #    second_batch = Batch.new round: round,
-  #                             date: Date.parse('2021-09-20')
-  #    second_batch.save!
-  #    assert_equal(first_batch, Batch.all.first)
-  # end
+  test 'the first Batch created is first in the list' do
+     round = Round.new day: 'Lundi'
+     first_batch = Batch.new round: round,
+                             date: Date.parse('2021-09-13')
+     first_batch.save!
+     second_batch = Batch.new round: round,
+                              date: Date.parse('2021-09-20')
+     second_batch.save!
+     assert_equal(first_batch, Batch.all.first)
+  end
 
   test 'updated_at is changed after updating round' do
     round1 = Round.new day: 'Lundi'
@@ -87,6 +86,99 @@ class BatchTest < ActiveSupport::TestCase
                        date: Date.parse('2021-09-13'),
                        bread: 'Spelt'
     refute batch2.valid?
+  end
+
+  test 'future' do
+    today = Date.today
+    yesterday = today - 1.day
+    tomorrow = today + 1.day
+    after_tomorrow = today + 2.days
+    round = Round.new day: 'Dimanche'
+    batch_today = Batch.new round: round,
+                            date: today
+    batch_today.save!
+    batch_yesterday = Batch.new round: round,
+                                date: yesterday
+    batch_yesterday.save!
+    batch_tomorrow = Batch.new round: round,
+                               date: tomorrow
+    batch_tomorrow.save!
+    batch_after_tomorrow = Batch.new round: round,
+                                     date: after_tomorrow
+    batch_after_tomorrow.save!
+    assert_equal(Batch.future.length, 3)
+    assert_includes(Batch.future, batch_today)
+    assert_includes(Batch.future, batch_tomorrow)
+    assert_includes(Batch.future, batch_after_tomorrow)
+    refute_includes(Batch.future, batch_yesterday)
+  end
+
+  test 'chronological' do
+    today = Date.today
+    yesterday = today - 1.day
+    tomorrow = today + 1.day
+    after_tomorrow = today + 2.days
+    round = Round.new day: 'Dimanche'
+    batch_today = Batch.new round: round,
+                            date: today
+    batch_today.save!
+    batch_yesterday = Batch.new round: round,
+                                date: yesterday
+    batch_yesterday.save!
+    batch_after_tomorrow = Batch.new round: round,
+                                     date: after_tomorrow
+    batch_after_tomorrow.save!
+    batch_tomorrow = Batch.new round: round,
+                               date: tomorrow
+    batch_tomorrow.save!
+    assert_equal(Batch.chronological.length, 4)
+    assert_equal(Batch.chronological.first.date, yesterday)
+    assert_equal(Batch.chronological.last.date, after_tomorrow)
+  end
+
+  test 'next ones' do
+    today = Date.today
+    yesterday = today - 1.day
+    tomorrow = today + 1.day
+    after_tomorrow = today + 2.days
+    round = Round.new day: 'Dimanche'
+    batch_today = Batch.new round: round,
+                            date: today
+    batch_today.save!
+    batch_yesterday = Batch.new round: round,
+                                date: yesterday
+    batch_yesterday.save!
+    batch_after_tomorrow = Batch.new round: round,
+                                     date: after_tomorrow
+    batch_after_tomorrow.save!
+    batch_tomorrow = Batch.new round: round,
+                               date: tomorrow
+    batch_tomorrow.save!
+    assert_equal(Batch.next_ones.length, 3)
+    assert_equal(Batch.next_ones.first.date, today)
+    assert_equal(Batch.next_ones.last.date, after_tomorrow)
+    refute_includes(Batch.future, batch_yesterday)
+  end
+
+  test 'very next ones' do
+    today = Date.today
+    yesterday = today - 1.day
+    round = Round.new day: 'Dimanche'
+    batch_today = Batch.new round: round,
+                            date: today
+    batch_today.save!
+    batch_yesterday = Batch.new round: round,
+                                date: yesterday
+    batch_yesterday.save!
+    6.times do |i|
+      batch_future = Batch.new round: round,
+                               date: today + i+1.days
+      batch_future.save!
+    end
+    assert_equal(Batch.very_next_ones.length, 3)
+    assert_equal(Batch.very_next_ones.first.date, today)
+    refute_includes(Batch.future, batch_yesterday)
+    refute_includes(Batch.very_next_ones, Batch.where(date: today + 5.days))
   end
 
 end

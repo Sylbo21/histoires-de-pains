@@ -1,23 +1,23 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  email: MyString
-  role: MyString
-  password_digest: MyString
-  first_name: MyString
-  last_name: MyString
-  phone: MyString
-  address: MyString
-  npa: MyString
-  city: MyString
-
-two:
-  email: MyString
-  role: MyString
-  password_digest: MyString
-  first_name: MyString
-  last_name: MyString
-  phone: MyString
-  address: MyString
-  npa: MyString
-  city: MyString
+# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+#
+# one:
+#   email: MyString
+#   role: MyString
+#   password_digest: MyString
+#   first_name: MyString
+#   last_name: MyString
+#   phone: MyString
+#   address: MyString
+#   npa: MyString
+#   city: MyString
+#
+# two:
+#   email: MyString
+#   role: MyString
+#   password_digest: MyString
+#   first_name: MyString
+#   last_name: MyString
+#   phone: MyString
+#   address: MyString
+#   npa: MyString
+#   city: MyString

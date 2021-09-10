@@ -2,16 +2,15 @@ require 'test_helper'
 
 class LocationTest < ActiveSupport::TestCase
 
-  # test 'the first Location created is first in the list' do
-  # # Fails: gives <Location id: 298486374, name: "MyString", address: "MyString", created_at: "2021-07-09 14:21:17", updated_at: "2021-07-09 14:21:17", latitude: nil, longitude: nil> as Location.all.first -> why? Because of automatic lon/lat attributes? -> Seems not because same problem with Rounds
-  #    first_location = Location.new name: 'New York',
-  #                                  address: 'Bleeker Street, New York'
-  #    first_location.save!
-  #    second_location = Location.new name: 'Paris',
-  #                                   address: 'Champs Elysées 52, Paris'
-  #    second_location.save!
-  #    assert_equal(first_location, Location.all.first)
-  # end
+  test 'the first Location created is first in the list' do
+     first_location = Location.new name: 'New York',
+                                   address: 'Bleeker Street, New York'
+     first_location.save!
+     second_location = Location.new name: 'Paris',
+                                    address: 'Champs Elysées 52, Paris'
+     second_location.save!
+     assert_equal(first_location, Location.all.first)
+  end
 
   test 'updated_at is changed after updating name' do
     location = Location.new name: 'Los Angeles',
