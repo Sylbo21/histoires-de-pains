@@ -29,6 +29,29 @@ batch4 = Batch.create! round: round2,
 batch5 = Batch.create! round: round3,
                        date: Date.parse('2021-09-15')
 
+user1 = User.create! email: 'sylviane@mail.com',
+                     password: 'password',
+                     first_name: 'Sylviane',
+                     last_name: 'Borel',
+                     phone: '0788941171',
+                     address: 'Parc-de-la-Rouvraie 6',
+                     npa: '1018',
+                     city: 'Lausanne'
+
+user2 = User.create! email: 'salvo@mail.com',
+                     password: 'password',
+                     first_name: 'Salvatore',
+                     last_name: 'Cartesio'
+
+user3 = User.create! email: 'noemi@mail.com',
+                     password: 'password'
+
+admin = User.create! email: 'jd@mail.com',
+                     password: 'password',
+                     first_name: 'Jean-Denis',
+                     last_name: 'Borel',
+                     role: 'admin'
+
 round1.locations << location1
 round1.locations << location2
 round2.locations << location3
