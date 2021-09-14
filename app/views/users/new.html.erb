@@ -12,12 +12,12 @@
 
     <div class="form-group mb-3">
       <%= form.label(:email) %>
-      <%= form.email_field(:email, class: 'form-control') %>
+      <%= form.email_field(:email, class: 'form-control', required: true) %>
     </div>
 
     <div class="form-group mb-3">
       <%= form.label(:password) %>
-      <%= form.password_field(:password, class: 'form-control') %>
+      <%= form.password_field(:password, class: 'form-control', required: true) %>
     </div>
 
     <%= form.submit('Créer un compte', class: 'btn btn-primary') %>
