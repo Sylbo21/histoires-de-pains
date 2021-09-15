@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :email, uniqueness: true
   validates :role, inclusion: { in: %w(registered admin) }
+  # Add validation rules for other attributes (especially phone and NPA)
 
   after_initialize :default_role!
   before_validation :downcase_email
