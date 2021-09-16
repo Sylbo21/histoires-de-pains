@@ -8,9 +8,9 @@
   <!-- Remplacer le lien par path helper -->
   <p class="mb-3">Je n'ai pas encore de compte <a href="#">Créer un compte</a></p>
 
-  <% if(@user.errors.any?) %>
+  <% if(flash.any?) %>
     <div class="alert alert-warning" role="alert">
-      <% @user.errors.full_messages.each do |message| %>
+      <% flash.each do |message| %>
         <%= message %>.<br/>
       <% end %>
     </div>
