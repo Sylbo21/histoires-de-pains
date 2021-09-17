@@ -5,8 +5,10 @@
 
 <div class="container">
 
-  <!-- Remplacer le lien par path helper -->
-  <p class="mb-3">J'ai déjà un compte. <a href="#">Me connecter</a></p>
+  <p class="mb-3">
+    J'ai déjà un compte.
+    <%= link_to(' Me connecter', new_session_path) %>
+  </p>
 
   <% if(@user.errors.any?) %>
     <div class="alert alert-warning" role="alert">

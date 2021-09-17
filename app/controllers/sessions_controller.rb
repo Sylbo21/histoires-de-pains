@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       # change redirect_to 'My Account'
       redirect_to root_path
     else
-      flash[:alert] = "Email or password is invalid. Please try again."
+      flash[:alert] = "L'email et/ou le mot de passe ne sont pas valides. Veuillez réessayer."
       render 'new'
     end
   end
