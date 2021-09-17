@@ -23,8 +23,12 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :account, only: [:show, :edit, :update]
+  get 'account/show'
 
   get 'account', to: 'account#show'
+
+  get 'account/edit'
+
+  patch 'account', to: 'account#update'
 
 end
