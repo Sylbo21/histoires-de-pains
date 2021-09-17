@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
 
   namespace :admin do
     resources :locations
@@ -27,5 +22,9 @@ Rails.application.routes.draw do
   resources :batches
 
   resources :users
+
+  resources :account, only: [:show, :edit, :update]
+
+  get 'account', to: 'account#show'
 
 end
