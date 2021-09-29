@@ -3,16 +3,31 @@
 </div>
 
 <div class="container">
-  
+
   <h2>Mes détails</h2>
-  <p><%= link_to('Compléter/Editer mes détails', account_edit_path) %></p>
+  <p><%= link_to('Compléter / Editer mes détails', account_edit_path) %></p>
   <ul>
-    <li>Prénom: </li>
-    <li>Nom: </li>
-    <li>Email: </li>
-    <li>Téléphone: </li>
-    <li>Rue, numéro: </li>
-    <li>Localité: </li>
+    <%= render(partial: 'user_detail', locals: {
+      key: "Prénom",
+      value: current_user.first_name }) %>
+    <%= render(partial: 'user_detail', locals: {
+      key: "Nom",
+      value: current_user.last_name }) %>
+    <%= render(partial: 'user_detail', locals: {
+      key: "Email",
+      value: current_user.email }) %>
+    <%= render(partial: 'user_detail', locals: {
+      key: "Téléphone",
+      value: current_user.phone }) %>
+    <%= render(partial: 'user_detail', locals: {
+      key: "Adresse",
+      value: current_user.address }) %>
+    <%= render(partial: 'user_detail', locals: {
+      key: "NPA",
+      value: current_user.npa }) %>
+    <%= render(partial: 'user_detail', locals: {
+      key: "Ville",
+      value: current_user.city }) %>
   </ul>
 
   <!-- if current_user has active subscritptions -->
