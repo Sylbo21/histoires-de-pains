@@ -11,7 +11,7 @@ class UsersTest < ApplicationSystemTestCase
     click_button 'Créer un compte'
     assert_equal(1, User.all.count)
     assert_equal('randomuser@gmail.com', User.first.email)
-    assert_equal current_path, root_path
+    assert_equal current_path, account_path
   end
 
 end
