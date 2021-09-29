@@ -31,4 +31,8 @@ Rails.application.routes.draw do
 
   patch 'account', to: 'account#update'
 
+  get  '/login',  to: 'sessions#new'
+  get  '/logout', to: 'sessions#destroy'
+  get  '/signup', to: 'users#new'
+
 end

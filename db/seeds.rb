@@ -16,15 +16,15 @@ batch1 = Batch.create! round: round1,
                        bread: 'Kamut'
 
 batch2 = Batch.create! round: round1,
-                       date: Date.parse('2021-09-20'),
+                       date: Date.parse('2022-09-20'),
                        bread: 'Spelt'
 
 batch3 = Batch.create! round: round2,
-                       date: Date.parse('2021-09-14'),
+                       date: Date.parse('2022-09-14'),
                        bread: 'Multigrain'
 
 batch4 = Batch.create! round: round2,
-                       date: Date.parse('2021-09-21')
+                       date: Date.parse('2022-09-21')
 
 batch5 = Batch.create! round: round3,
                        date: Date.parse('2021-09-15')
