@@ -1,2 +1,62 @@
-<h1>Account#edit</h1>
-<p>Find me in app/views/account/edit.html.erb</p>
+<div class="container-fluid bg-light text-center p-5 mb-5">
+  <h1>Compléter / Editer mes détails</h1>
+</div>
+
+<div class="container">
+
+  <% if(current_user.errors.any?) %>
+    <div class="alert alert-warning" role="alert">
+      <% current_user.errors.full_messages.each do |message| %>
+        <%= message %>.<br/>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= form_for(current_user, url: account_path) do |form| %> <!-- to test server-side error messages, add this inside (): ", html: { novalidate: true }" -->
+
+    <div class="form-group mb-3">
+      <%= form.label(:first_name) %>
+      <%= form.text_field(:first_name, class: 'form-control') %>
+    </div>
+
+    <div class="form-group mb-3">
+      <%= form.label(:last_name) %>
+      <%= form.text_field(:last_name, class: 'form-control') %>
+    </div>
+
+    <div class="form-group mb-3">
+      <%= form.label(:email) %>
+      <%= form.email_field(:email, class: 'form-control', required: true) %>
+    </div>
+
+    <div class="form-group mb-3">
+      <%= form.label(:phone) %>
+      <%= form.text_field(:phone, class: 'form-control') %>
+    </div>
+
+    <div class="form-group mb-3">
+      <%= form.label(:address) %>
+      <%= form.text_field(:address, class: 'form-control') %>
+    </div>
+
+    <div class="form-group mb-3">
+      <%= form.label(:npa) %>
+      <%= form.text_field(:npa, class: 'form-control') %>
+    </div>
+
+    <div class="form-group mb-3">
+      <%= form.label(:city) %>
+      <%= form.text_field(:city, class: 'form-control') %>
+    </div>
+
+    <!-- How to update password? Ok simply like this? And adding password to strong parameters -->
+    <!-- <div class="form-group mb-3">
+      < form.label(:password) %>
+      < form.password_field(:password, class: 'form-control', required: true) %>
+    </div> -->
+
+    <%= form.submit('Editer mes détails', class: 'btn btn-primary') %>
+
+  <% end %>
+
+</div>

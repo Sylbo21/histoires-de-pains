@@ -11,6 +11,8 @@ class AccountController < ApplicationController
   end
 
   def update
+    current_user.update(user_params)
+    redirect_to account_path
   end
 
   def ensure_authenticated
@@ -19,6 +21,12 @@ class AccountController < ApplicationController
 
   def current_user
     User.find(session[:user_id])
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:fist_name, :last_name, :email, :phone, :address, :npa, :city)
   end
 
 end
