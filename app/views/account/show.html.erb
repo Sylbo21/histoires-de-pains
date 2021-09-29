@@ -1,2 +1,25 @@
-<h1>Account#show</h1>
-<p>Find me in app/views/account/show.html.erb</p>
+<div class="container-fluid bg-light text-center p-5 mb-5">
+  <h1>Mon compte</h1>
+</div>
+
+<div class="container">
+  
+  <h2>Mes détails</h2>
+  <p><%= link_to('Compléter/Editer mes détails', account_edit_path) %></p>
+  <ul>
+    <li>Prénom: </li>
+    <li>Nom: </li>
+    <li>Email: </li>
+    <li>Téléphone: </li>
+    <li>Rue, numéro: </li>
+    <li>Localité: </li>
+  </ul>
+
+  <!-- if current_user has active subscritptions -->
+    <h2 class="mb-5">Mes abonnements actifs</h2>
+    <!-- list of active subscritptions (cards)-->
+  <!-- else -->
+    <p>Vous n'avez pas d'abonnement actif pour l'instant.</p>
+  <!-- end -->
+
+</div>
