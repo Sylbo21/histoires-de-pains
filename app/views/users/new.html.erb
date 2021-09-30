@@ -18,7 +18,7 @@
     </div>
   <% end %>
 
-  <%= form_for(@user) do |form| %> <!-- to test server-side error messages, add this inside (): ", html: { novalidate: true }" -->
+  <%= form_for(@user, html: { novalidate: true }) do |form| %> <!-- to test server-side error messages, add this inside (): ", html: { novalidate: true }" -->
 
     <div class="form-group mb-3">
       <%= form.label(:email) %>

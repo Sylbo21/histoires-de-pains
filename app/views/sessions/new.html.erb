@@ -16,7 +16,7 @@
     <% end %>
   <% end %>
 
-  <%= form_tag(sessions_path) do %> <!-- to test server-side error messages, add this inside (): ", novalidate: "novalidate"" -->
+  <%= form_tag(sessions_path, novalidate: "novalidate") do %> <!-- to test server-side error messages, add this inside (): ", novalidate: "novalidate"" -->
 
     <div class="form-group mb-3">
       <%= label_tag(:email, nil) %>
