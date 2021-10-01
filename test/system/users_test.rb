@@ -57,6 +57,7 @@ class UsersTest < ApplicationSystemTestCase
     assert_equal(1, User.all.count)
     assert_equal('new_user@gmail.com', User.first.email)
     assert_equal current_path, account_path
+    assert page.has_content?("Mon compte")
     assert page.has_content?(user.email)
   end
 
@@ -89,6 +90,21 @@ class UsersTest < ApplicationSystemTestCase
     click_button 'Se connecter'
     assert_equal current_path, sessions_path
     assert page.has_content?("L'email et/ou le mot de passe ne sont pas valides. Veuillez réessayer.")
+  end
+
+  test 'log out' do
+    user = User.new email: 'new_user@gmail.com', password: 'password'
+    user.save!
+    visit new_session_path
+    fill_in 'Email', with: 'new_user@gmail.com'
+    fill_in 'Password', with: 'password'
+    click_button 'Se connecter'
+    assert_equal current_path, account_path
+    click_on 'Se déconnecter'
+    assert_equal current_path, root_path
+    refute page.has_content?("Mon compte")
+    visit account_path
+    assert_equal current_path, login_path
   end
 
 end
