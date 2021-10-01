@@ -24,7 +24,9 @@
             <div id="navbarContent" class="collapse navbar-collapse">
               <ul class="navbar-nav">
                 <!-- Apply "active" class dynamically -->
-                <% if(logged_in?) %>
+                <% if(is_admin?) %>
+                  <%= render partial: 'admin_nav' %>
+                <% elsif(logged_in?) %>
                   <%= render partial: 'registered_nav' %>
                 <% else %>
                   <%= render partial: 'anonymous_nav' %>
