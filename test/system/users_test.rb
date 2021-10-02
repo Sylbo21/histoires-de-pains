@@ -13,7 +13,7 @@ class UsersTest < ApplicationSystemTestCase
     assert_equal(1, User.all.count)
     assert_equal('randomuser@gmail.com', User.first.email)
     assert_equal current_path, account_path
-    assert page.has_content?(User.first.email)
+    assert page.has_content?("Email: randomuser@gmail.com")
   end
 
   test 'sign up fails (wrong formatted email)' do
@@ -56,9 +56,11 @@ class UsersTest < ApplicationSystemTestCase
     click_button 'Se connecter'
     assert_equal(1, User.all.count)
     assert_equal('new_user@gmail.com', User.first.email)
+    assert_equal('new_user@gmail.com', user.email)
     assert_equal current_path, account_path
     assert page.has_content?("Mon compte")
-    assert page.has_content?(user.email)
+    assert page.has_content?("Email: new_user@gmail.com")
+    assert page.has_content?("Email: #{user.email}")
   end
 
   test 'log in fails (wrong formatted email)' do
